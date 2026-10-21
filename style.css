@@ -1,0 +1,458 @@
+/* CORES UTILIZADAS */
+
+:root {
+  --cor-fundo: #0b0d11;
+  --cor-texto: #f2f2f0;
+  --cor-texto-suave: #8b93a1;
+  --cor-destaque: #5eead4;
+  --cor-card: #161a22;
+  --cor-borda: #232833;
+  --cor-borda-suave: #1c2029;
+
+  --fonte-titulo: 'Space Grotesk', sans-serif;
+  --fonte-texto: 'IBM Plex Sans', sans-serif;
+  --fonte-mono: 'IBM Plex Mono', monospace;
+
+  --espaco-lateral: 72px;
+  --raio: 14px;
+}
+
+/* =========================================================
+   RESET E BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* evita que o título da seção fique escondido atrás do menu fixo */
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--cor-texto);
+}
+
+ul {
+  list-style: none;
+}
+
+/* =========================================================
+   CABEÇALHO / MENU
+   ========================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px var(--espaco-lateral);
+  background-color: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda-suave);
+}
+
+.logo {
+  font-family: var(--fonte-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--cor-texto);
+}
+
+.logo__destaque {
+  color: var(--cor-destaque);
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+  font-size: 15px;
+}
+
+.menu a {
+  color: var(--cor-texto-suave);
+}
+
+.menu a:hover,
+.menu a.ativo {
+  color: var(--cor-destaque);
+}
+
+/* botão hambúrguer: escondido no desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle__linha {
+  width: 24px;
+  height: 2px;
+  background-color: var(--cor-texto);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* vira um "X" quando o menu está aberto (a classe é colocada pelo JS) */
+.menu-toggle--aberto .menu-toggle__linha:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle--aberto .menu-toggle__linha:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle--aberto .menu-toggle__linha:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   COMPONENTES REUTILIZÁVEIS (tag e botão)
+   ========================================================= */
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  font-family: var(--fonte-mono);
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  border: 1px solid #2a2e37;
+  border-radius: 999px;
+}
+
+.tag--destaque {
+  color: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 26px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primario {
+  background-color: var(--cor-destaque);
+  color: var(--cor-fundo);
+}
+
+.btn--primario:hover {
+  color: var(--cor-fundo);
+  background-color: var(--cor-texto);
+}
+
+.btn--secundario {
+  color: var(--cor-texto);
+  border: 1px solid #2a2e37;
+}
+
+.btn--secundario:hover {
+  color: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  max-width: 900px;
+  padding: 120px var(--espaco-lateral) 110px;
+}
+
+.hero__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.hero__texto {
+  text-justify: justify;
+  max-width: 560px;
+  font-size: 19px;
+  color: var(--cor-texto-suave);
+}
+
+.hero__botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+/* =========================================================
+   SEÇÕES (estrutura comum)
+   ========================================================= */
+.secao {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 var(--espaco-lateral) 110px;
+}
+
+/* variação: rótulo à esquerda, conteúdo à direita */
+.secao--lado-a-lado {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.secao__rotulo {
+  flex-shrink: 0;
+  width: 260px;
+  font-family: var(--fonte-mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--cor-destaque);
+}
+
+/* na seção de projetos o rótulo fica em cima, então não precisa de largura fixa */
+.secao:not(.secao--lado-a-lado) .secao__rotulo {
+  width: auto;
+}
+
+.sobre__texto {
+  max-width: 700px;
+  font-size: 20px;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   PROJETOS (grid de cards)
+   ========================================================= */
+.projetos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cor-destaque);
+}
+
+.card__numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-family: var(--fonte-mono);
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+}
+
+.card__titulo {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card__texto {
+  flex-grow: 1; /* empurra as tags para o fim do card */
+  font-size: 15px;
+  color: var(--cor-texto-suave);
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card--em-breve {
+  opacity: 0.6;
+}
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 700px;
+}
+
+/* =========================================================
+   RODAPÉ / CONTATO
+   ========================================================= */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 64px var(--espaco-lateral);
+  border-top: 1px solid var(--cor-borda-suave);
+}
+
+.footer__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.footer__email {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--cor-texto-suave);
+}
+
+.footer__links {
+  display: flex;
+  gap: 28px;
+  font-size: 15px;
+}
+
+/* =========================================================
+   ANIMAÇÃO DE ENTRADA (a classe "visivel" é colocada pelo JS)
+   ========================================================= */
+.revelar {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* quem prefere menos movimento no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --espaco-lateral: 40px;
+  }
+
+  .projetos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .secao--lado-a-lado {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .secao__rotulo {
+    width: auto;
+  }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+  :root {
+    --espaco-lateral: 24px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* o menu vira uma lista que cai embaixo do cabeçalho */
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--cor-fundo);
+    border-bottom: 1px solid var(--cor-borda-suave);
+  }
+
+  .menu--aberto {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 18px var(--espaco-lateral);
+    border-top: 1px solid var(--cor-borda-suave);
+  }
+
+  .hero {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .hero__titulo {
+    font-size: 42px;
+  }
+
+  .hero__texto {
+    font-size: 17px;
+  }
+
+  .secao {
+    padding-bottom: 72px;
+  }
+
+  .sobre__texto {
+    font-size: 18px;
+  }
+
+  .projetos {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

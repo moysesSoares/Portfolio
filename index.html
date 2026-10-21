@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moyses-dev | Portfólio</title>
+  <meta name="description" content="Portfólio de [Seu Nome], desenvolvedor(a) front-end em formação.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ========== CABEÇALHO / MENU ========== -->
+  <header class="header">
+    <a href="#inicio" class="logo">MoysesSoares<span class="logo__destaque">.dev</span></a>
+
+    <nav class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#skills">Skills</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section id="inicio" class="hero">
+      <p class="tag tag--destaque">disponível para oportunidades</p>
+      <h1 class="hero__titulo">Olá, eu sou o <br> Moysés Soares.</h1>
+      <p class="hero__texto">
+        Desenvolvedor(a) front-end e back-end em formação na Uninter, construindo interfaces com HTML, CSS e JavaScript — e aprendendo algo novo em cada projeto.
+      </p>
+      <div class="hero__botoes">
+        <a href="#projetos" class="btn btn--primario">Ver projetos</a>
+        <a href="#contato" class="btn btn--secundario">Falar comigo</a>
+      </div>
+    </section>
+
+    <!-- ========== SOBRE ========== -->
+    <section id="sobre" class="secao secao--lado-a-lado">
+      <h2 class="secao__rotulo">01 — SOBRE</h2>
+      <p class="sobre__texto">
+        Estou aprendendo programação do zero e já construí projetos como uma lista de tarefas interativa e um app que consome uma API pública. Meu foco agora é evoluir em HTML, CSS e JavaScript enquanto decido entre seguir front-end, back-end ou full stack.
+      </p>
+    </section>
+
+    <!-- ========== PROJETOS ========== -->
+    <section id="projetos" class="secao">
+      <h2 class="secao__rotulo">02 — PROJETOS</h2>
+
+      <div class="projetos">
+
+        <article class="card">
+          <span class="card__numero">01</span>
+          <h3 class="card__titulo">Lista de Tarefas</h3>
+          <p class="card__texto">JavaScript puro com array de objetos, persistência em localStorage e interação por teclado.</p>
+          <ul class="card__tags">
+            <li class="tag">HTML</li>
+            <li class="tag">CSS</li>
+            <li class="tag">JS</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card__numero">02</span>
+          <h3 class="card__titulo">Pokédex</h3>
+          <p class="card__texto">Consumo da PokéAPI com fetch, async/await e renderização dinâmica dos resultados.</p>
+          <ul class="card__tags">
+            <li class="tag">JS</li>
+            <li class="tag">API</li>
+            <li class="tag">Fetch</li>
+          </ul>
+        </article>
+
+        <!-- A classe "card--em-breve" serve para você deixar este card mais apagado no CSS -->
+        <article class="card card--em-breve">
+          <span class="card__numero">03</span>
+          <h3 class="card__titulo">Buscador de Filmes</h3>
+          <p class="card__texto">Em construção — busca de filmes e séries usando a API do TMDb.</p>
+          <ul class="card__tags">
+            <li class="tag">Em breve</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="secao secao--lado-a-lado">
+      <h2 class="secao__rotulo">03 — SKILLS</h2>
+      <ul class="skills">
+        <li class="tag">HTML5</li>
+        <li class="tag">CSS3</li>
+        <li class="tag">Flexbox</li>
+        <li class="tag">Grid</li>
+        <li class="tag">JavaScript</li>
+        <li class="tag">APIs / Fetch</li>
+        <li class="tag">Node</li>
+        <li class="tag">Git &amp; GitHub</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ========== CONTATO / RODAPÉ ========== -->
+  <footer id="contato" class="footer">
+    <div class="footer__chamada">
+      <h2 class="footer__titulo">Vamos conversar?</h2>
+      <p class="footer__email">moysessoaresres@gmail.com</p>
+    </div>
+
+    <nav class="footer__links" aria-label="Redes e contato">
+      <a href="https://github.com/moysesSoares" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/moys%C3%A9s-soares-dos-santos-2364963a9/" target="_blank">LinkedIn</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
